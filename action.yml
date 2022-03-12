@@ -1,0 +1,41 @@
+name: 'jdk-sbt-cache'
+description: 'Checkout Code, Setup JDK and SBT Cache by SO'
+
+inputs:
+  fetch-depth:
+    required: false
+    description: 'fetch-depth'
+    default: '1'
+  token:
+    required: true
+    description: 'token'    
+  jdk-distro:
+    required: false
+    description: 'jdk version'
+    default: 'adopt'
+  jdk-version:
+    required: false
+    description: 'jdk version'
+    default: '11'
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: ${{ inputs.fetch-depth }}
+        token: ${{ inputs.token }}
+
+    - uses: actions/setup-java@v2
+      with:
+        distribution: ${{ inputs.jdk-distro }}
+        java-version: ${{ inputs.jdk-version }}
+
+    - uses: actions/cache@v2
+      with:
+        path: |
+          ~/.sbt
+          ~/.ivy2/cache
+          ~/.coursier
+          ~/.cache/coursier
+        key: sbt-cache-${{ runner.os }}-${{ matrix.target-platform }}-${{ hashFiles('project/build.properties') }}
