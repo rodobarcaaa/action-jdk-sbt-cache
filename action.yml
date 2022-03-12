@@ -8,7 +8,7 @@ inputs:
     default: '1'
   token:
     required: true
-    description: 'token'    
+    description: 'token'
   jdk-distro:
     required: false
     description: 'jdk version'
@@ -39,3 +39,7 @@ runs:
           ~/.coursier
           ~/.cache/coursier
         key: sbt-cache-${{ runner.os }}-${{ matrix.target-platform }}-${{ hashFiles('project/build.properties') }}
+
+branding:
+  icon: 'aperture'
+  color: 'blue'
