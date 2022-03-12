@@ -2,16 +2,16 @@ name: 'jdk-sbt-cache'
 description: 'Checkout Code, Setup JDK and SBT Cache by SO'
 
 inputs:
+  token:
+    required: true
+    description: 'token'
   fetch-depth:
     required: false
     description: 'fetch-depth'
     default: '1'
-  token:
-    required: true
-    description: 'token'
   jdk-distro:
     required: false
-    description: 'jdk version'
+    description: 'jdk distro'
     default: 'adopt'
   jdk-version:
     required: false
