@@ -8,7 +8,7 @@ inputs:
   fetch-depth:
     required: false
     description: 'fetch-depth'
-    default: '1'
+    default: 1
   ref:
     required: false
     description: 'ref'
@@ -26,13 +26,6 @@ runs:
   using: "composite"
   steps:
     - uses: actions/checkout@v3
-      if: inputs.ref == ''
-      with:
-        fetch-depth: ${{ inputs.fetch-depth }}
-        token: ${{ inputs.token }}
-        
-    - uses: actions/checkout@v3
-      if: inputs.ref != ''
       with:
         fetch-depth: ${{ inputs.fetch-depth }}
         token: ${{ inputs.token }}
