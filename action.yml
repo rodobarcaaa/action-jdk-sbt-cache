@@ -32,7 +32,7 @@ runs:
         ref: ${{ inputs.ref }}
         
 
-    - uses: actions/setup-java@v5
+    - uses: actions/setup-java@v6
       with:
         distribution: ${{ inputs.jdk-distro }}
         java-version: ${{ inputs.jdk-version }}
